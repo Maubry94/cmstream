@@ -174,6 +174,7 @@ class GetMovie extends IndexHandler{
         $this->title = $movie->getTitle();
         $this->description = $movie->getDescription();
         $this->keywords = "streaming, {$movie->getTitle()}, movie";
+        $this->thumbnail = $movie->getImage();
 
     }
 }
@@ -193,6 +194,7 @@ class GetSerie extends IndexHandler{
         $this->title = $serie->getTitle();
         $this->description = $serie->getDescription();
         $this->keywords = "streaming, {$serie->getTitle()}, serie";
+        $this->thumbnail = $serie->getImage();
     }
 }
 
