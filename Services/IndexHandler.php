@@ -13,6 +13,7 @@ abstract class IndexHandler extends OverrideController{
     public ?string $title = null;
     public ?string $description = null;
     public ?string $keywords = null;
+    public ?string $thumbnail = null;
 
     public function extendCheckers(Request $request): array
     {
@@ -45,7 +46,8 @@ abstract class IndexHandler extends OverrideController{
                 "appName" => $this->appName,
                 "title" => $this->title,
                 "description" => $this->description,
-                "keywords" => $this->keywords
+                "keywords" => $this->keywords,
+                "thumbnail" => $this->thumbnail,
             ]
         );
     }

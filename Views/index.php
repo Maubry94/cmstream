@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- general -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $appName ?><?= $title ? " - " . $title : "" ?></title>
+    <meta name="title" content="<?= $appName ?><?= $title ? " - " . $title : "" ?>">
     <?= $description ? "<meta name=\"description\" content=\"$description\">" : '' ?>
     <?= $keywords ? "<meta name=\"keywords\" content=\"$keywords\">" : '' ?>
+    <!-- facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>">
+    <meta property="og:title" content="<?= $appName ?><?= $title ? " - " . $title : "" ?>">
+    <?= $description ? "<meta property=\"og:description\" content=\"$description\">" : '' ?>
+    <?= $thumbnail ? "<meta property=\"og:image\" content=\"$thumbnail\">" : '' ?>
+    <!-- twitter -->
+    <?= $thumbnail ? "<meta name=\"twitter:card\" content=\"summary_large_image\">" : '' ?>
+    <meta name="twitter:url" content="<?= $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>">
+    <meta name="twitter:title" content="<?= $appName ?><?= $title ? " - " . $title : "" ?>">
+    <?= $description ? "<meta name=\"twitter:description\" content=\"$description\">" : '' ?>
+    <?= $thumbnail ? "<meta name=\"twitter:image\" content=\"$thumbnail\">" : '' ?>
     <link rel="icon" href="/public/img/icons/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
