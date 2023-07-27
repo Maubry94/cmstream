@@ -7,20 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $appName ?><?= $title ? " - " . $title : "" ?></title>
     <meta name="title" content="<?= $appName ?><?= $title ? " - " . $title : "" ?>">
-    <?= $description ? "<meta name=\"description\" content=\"$description\">" : '' ?>
+    <meta name="description" content="<?= $description ? $description : "Streamez en toute simplicité." ?>">
+    <meta name="theme-color" content="#5499C7" />
     <?= $keywords ? "<meta name=\"keywords\" content=\"$keywords\">" : '' ?>
     <!-- facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>">
     <meta property="og:title" content="<?= $appName ?><?= $title ? " - " . $title : "" ?>">
-    <?= $description ? "<meta property=\"og:description\" content=\"$description\">" : '' ?>
-    <?= $thumbnail ? "<meta property=\"og:image\" content=\"$thumbnail\">" : '' ?>
+    <meta property="og:description" content="<?= $description ? $description : "Streamez en toute simplicité." ?>">
+    <meta property="og:image" content="<?= $thumbnail ? $thumbnail : "/public/img/icons/logo-big.png" ?>">
     <!-- twitter -->
-    <?= $thumbnail ? "<meta name=\"twitter:card\" content=\"summary_large_image\">" : '' ?>
-    <meta name="twitter:url" content="<?= $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>">
-    <meta name="twitter:title" content="<?= $appName ?><?= $title ? " - " . $title : "" ?>">
-    <?= $description ? "<meta name=\"twitter:description\" content=\"$description\">" : '' ?>
-    <?= $thumbnail ? "<meta name=\"twitter:image\" content=\"$thumbnail\">" : '' ?>
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="<?= $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>">
+    <meta property="twitter:title" content="<?= $appName ?><?= $title ? " - " . $title : "" ?>">
+    <meta property="twitter:description" content="<?= $description ? $description : "Streamez en toute simplicité." ?>">
+    <meta property="twitter:image" content="<?= $thumbnail ? $thumbnail : "/public/img/icons/logo-big.png" ?>">
     <link rel="icon" href="/public/img/icons/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
