@@ -14,7 +14,7 @@ use Services\token\ResetToken;
 //is not checker
 function goodRedirect(){
     if(Request::getCurrentRequest()->getHeader("Page-Access") === null){
-        Response::getCurrentResponse()->code(401)->info("token.invalid")->redirect("/signin");
+        Response::getCurrentResponse()->code(401)->info("token.invalid")->redirect("/connexion");
     }
     else{
         Response::getCurrentResponse()->code(401)->info("token.invalid")->send();

@@ -10,7 +10,7 @@
     </url>
 
     <url>
-        <loc><?= $config['HOST'] ?>/catalog</loc>
+        <loc><?= $config['HOST'] ?>/catalogue</loc>
 
         <changefreq>weekly</changefreq>
 
@@ -18,13 +18,13 @@
     </url>
 
     <url>
-        <loc><?= $config['HOST'] ?>/signup</loc>
+        <loc><?= $config['HOST'] ?>/inscription</loc>
 
         <priority>0</priority>
     </url>
 
     <url>
-        <loc><?= $config['HOST'] ?>/signin</loc>
+        <loc><?= $config['HOST'] ?>/connexion</loc>
 
         <priority>0</priority>
     </url>
@@ -36,7 +36,7 @@
     </url>
 
     <url>
-        <loc><?= $config['HOST'] ?>/forgot-password</loc>
+        <loc><?= $config['HOST'] ?>/mot-de-passe-oublie</loc>
 
         <priority>0</priority>
     </url>
@@ -53,7 +53,7 @@
 
     <?php foreach($movies as $movie) echo "
         <url>
-            <loc>{$config['HOST']}/movie/{$movie->getId()}</loc>
+            <loc>{$config['HOST']}/film/{$movie->getId()}</loc>
 
             <lastmod>{$movie->getUpdatedAt()}</lastmod>
 
@@ -63,7 +63,7 @@
 
     <?php foreach($episodes as $episode) echo "
         <url>
-            <loc>{$config['HOST']}/serie/{$episode->getSerieId()}/season/{$episode->getSeason()}/episode/{$episode->getEpisode()}</loc>
+            <loc>{$config['HOST']}/serie/{$episode->getSerieId()}/saison/{$episode->getSeason()}/episode/{$episode->getEpisode()}</loc>
 
             <lastmod>{$episode->getUpdatedAt()}</lastmod>
 

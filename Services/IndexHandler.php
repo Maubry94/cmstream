@@ -10,6 +10,7 @@ abstract class IndexHandler extends OverrideController{
     public int $code = 200;
 
     public string $appName = CONFIG["APP_NAME"];
+    public ?string $title = null;
     public ?string $description = null;
     public ?string $keywords = null;
 
@@ -29,7 +30,9 @@ abstract class IndexHandler extends OverrideController{
             $response
             ->code($this->code)
             ->setHeader("App-Name", $this->appName)
+            ->setHeader("Page-Title", $this->title)
             ->addExpose("App-Name")
+            ->addExpose("Page-Title")
             ->send();
         }
 
@@ -40,8 +43,9 @@ abstract class IndexHandler extends OverrideController{
             "none", 
             [
                 "appName" => $this->appName,
+                "title" => $this->title,
                 "description" => $this->description,
-                "keywords" => $this->keywords,
+                "keywords" => $this->keywords
             ]
         );
     }

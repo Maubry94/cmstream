@@ -15,17 +15,17 @@ use Services\Permissions;
 
 /**
  * @GET{/}
- * @GET{/catalog}
+ * @GET{/catalogue}
  * @GET{/pages/{name}}
  * @GET{/notfound}
  */
 class index extends IndexHandler{}
 
 /**
- * @GET{/signin}
- * @GET{/signup}
- * @GET{/validate}
- * @GET{/forgot-password}
+ * @GET{/connexion}
+ * @GET{/inscription}
+ * @GET{/validation}
+ * @GET{/mot-de-passe-oublie}
  */
 class guest extends IndexHandler
 {
@@ -38,7 +38,7 @@ class guest extends IndexHandler
 }
 
 /**
- * @GET{/reset-password}
+ * @GET{/reinitialiser-mot-de-passe}
  */
 class resetPassword extends IndexHandler
 {
@@ -52,9 +52,7 @@ class resetPassword extends IndexHandler
 
 /**
  * @GET{/lists}
- * @GET{/account}
- * @GET{/account/email}
- * @GET{/account/password}
+ * @GET{/compte}
  */
 class connected extends IndexHandler
 {
@@ -81,7 +79,7 @@ class admin extends IndexHandler
 }
 
 /**
- * @GET{/dashboard/users}
+ * @GET{/dashboard/utilisateurs}
  */
 class adminUser extends IndexHandler
 {
@@ -127,7 +125,7 @@ class adminConfig extends IndexHandler
 }
 
 /**
- * @GET{/dashboard/comments}
+ * @GET{/dashboard/commentaires}
  */
 class dashboardManager extends IndexHandler
 {
@@ -142,11 +140,11 @@ class dashboardManager extends IndexHandler
 }
 
 /**
- * @GET{/dashboard/add-content}
+ * @GET{/dashboard/ajouter-contenu}
  * @GET{/dashboard/categories}
- * @GET{/dashboard/edit-video/{typeEdit}/{id}}
+ * @GET{/dashboard/editer-video/{typeEdit}/{id}}
  * @GET{/dashboard/series}
- * @GET{/dashboard/movies}
+ * @GET{/dashboard/films}
  * @GET{/dashboard/pages}
  */
 class adminContent extends IndexHandler
@@ -162,7 +160,7 @@ class adminContent extends IndexHandler
 }
 
 /**
- * @GET{/movie/{id}}
+ * @GET{/film/{id}}
  */
 class GetMovie extends IndexHandler{
     public function extendHandler(Request $request, Response $response): void
@@ -172,10 +170,11 @@ class GetMovie extends IndexHandler{
             $this->code = 404;
             return;
         }
-        if($request->getHeader("Page-Access") === null){
-            $this->description = $movie->getDescription();
-            $this->keywords = "streaming, {$movie->getTitle()}, movie";
-        }
+
+        $this->title = $movie->getTitle();
+        $this->description = $movie->getDescription();
+        $this->keywords = "streaming, {$movie->getTitle()}, movie";
+
     }
 }
 
@@ -190,15 +189,15 @@ class GetSerie extends IndexHandler{
             $this->code = 404;
             return;
         }
-        if($request->getHeader("Page-Access") === null){
-            $this->description = $serie->getDescription();
-            $this->keywords = "streaming, {$serie->getTitle()}, serie";
-        }
+
+        $this->title = $serie->getTitle();
+        $this->description = $serie->getDescription();
+        $this->keywords = "streaming, {$serie->getTitle()}, serie";
     }
 }
 
 /**
- * @GET{/serie/{id}/season/{season}/episode/{episode}}
+ * @GET{/serie/{id}/saison/{season}/episode/{episode}}
  */
 class GetEpisode extends IndexHandler{
     public function extendHandler(Request $request, Response $response): void
@@ -235,6 +234,6 @@ class GetSitemap extends LiteController
             "episodes" => Episode::findIterator([]),
         ];
 
-        $response->code(200)->info("sitemap")->setHeader("Content-Type", "text/xml")->render("sitemap", "none", $vars);
+        $response->code(200)->info("sitemap")->setHeader("Content-Type", "text/html")->render("sitemap", "none", $vars);
     }
 }

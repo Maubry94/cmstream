@@ -19,7 +19,6 @@ services:
 
   database:
     image: postgres
-    restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
@@ -29,7 +28,6 @@ services:
 
   adminer:
     image: adminer
-    restart: always
     ports:
       - 8888:8080
 

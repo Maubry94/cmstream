@@ -71,5 +71,5 @@ taob.addHookInfo("token.invalid", async({response}, request, ip) => {
     if(userStore.isConnected === false) return;
     await userStore.disconnect(false);
     toastStore.pushToast("error", "Votre session a expiré, veuillez vous reconnecter.");
-    if(ip.pageAccess === undefined)router.push("/signin");
+    if(ip.pageAccess === undefined)router.push("/connexion");
 });

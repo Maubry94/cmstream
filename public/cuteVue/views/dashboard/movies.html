@@ -16,7 +16,7 @@
             <p class="mt-[10px] px-[20px] py-[10px]">{{ this.searchInfo }}</p>
         </div>
 
-        <router_link href="/dashboard/add-content?type=movie" class="add-movie-btn flex items-center gap-[10px] px-[20px] py-[10px] rounded-[8px] bg-skyblue hover:bg-[#1da1f2] text-white">
+        <router_link href="/dashboard/ajouter-contenu?type=film" class="add-movie-btn flex items-center gap-[10px] px-[20px] py-[10px] rounded-[8px] bg-skyblue hover:bg-[#1da1f2] text-white">
             <icon name="plus" class="text-xl"/>
             
             <span class="mt-[-2px]">Ajouter un film</span>
@@ -30,7 +30,7 @@
     @previous="previousPage"
     @next="nextPage"
     @delete="this.openDeleteModal($event.id)"
-    @edit="router.push(`/dashboard/edit-video/movie/${$event.id}`)"
+    @edit="router.push(`/dashboard/editer-video/film/${$event.id}`)"
     />
 </div>
 

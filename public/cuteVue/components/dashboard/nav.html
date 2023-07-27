@@ -19,9 +19,9 @@
                 </li>
 
                 <li class="text-whiteless hover:text-white hover:bg-adminblacker" cv-class="{
-                        'border-l-4 border-white-500': this.pathname === '/dashboard/users'
+                        'border-l-4 border-white-500': this.pathname === '/dashboard/utilisateurs'
                     }">
-                    <router_link cv-if="this.hasPermission('user_editor')" href="/dashboard/users"
+                    <router_link cv-if="this.hasPermission('user_editor')" href="/dashboard/utilisateurs"
                         class="px-[24px] py-[18px] flex items-center gap-[24px] cursor-pointer">
                         <icon name="account-group" class="text-[18px]" />
                         Liste des utilisateurs
@@ -39,9 +39,9 @@
                 </li>
 
                 <li cv-if="this.hasPermission('comments_manager')" class="text-whiteless hover:text-white hover:bg-adminblacker" cv-class="{
-                    'border-l-4 border-white-500': this.pathname === '/dashboard/comments'
+                    'border-l-4 border-white-500': this.pathname === '/dashboard/commentaires'
                 }">
-                    <router_link href="/dashboard/comments"
+                    <router_link href="/dashboard/commentaires"
                         class="px-[24px] py-[18px] flex items-center gap-[24px] cursor-pointer">
                         <icon name="forum"/>
                         Gérer les commentaires
@@ -62,9 +62,9 @@
 
                     <ul cv-if="this.dropdownContentManager === true">
                         <li class="text-whiteless hover:text-white hover:bg-adminblacker" cv-class="{
-                            'border-l-4 border-white-500': this.pathname === '/dashboard/add-content'
+                            'border-l-4 border-white-500': this.pathname === '/dashboard/ajouter-contenu'
                         }">
-                            <router_link href="/dashboard/add-content" class="px-[24px] py-[18px] ml-[20px] flex items-center gap-[24px] cursor-pointer">
+                            <router_link href="/dashboard/ajouter-contenu" class="px-[24px] py-[18px] ml-[20px] flex items-center gap-[24px] cursor-pointer">
                                 <icon name="plus-box-multiple" class="text-[18px]"/>
                                 Ajouter contenu
                             </router_link>
@@ -91,9 +91,9 @@
                         </li>
 
                         <li class="text-whiteless hover:text-white hover:bg-adminblacker" cv-class="{
-                            'border-l-4 border-white-500': this.pathname === '/dashboard/movies'
+                            'border-l-4 border-white-500': this.pathname === '/dashboard/films'
                         }">
-                            <router_link href="/dashboard/movies"
+                            <router_link href="/dashboard/films"
                                 class="px-[24px] py-[18px] ml-[20px] flex items-center gap-[24px] cursor-pointer">
                                 <icon name="filmstrip" class="text-[18px]" />
                                 Gérer films
@@ -171,7 +171,7 @@
         },
         methods: {
             setDropdownContentManager() {
-                this.dropdownContentManager = this.pathname === "/dashboard/categories" || this.pathname === "/dashboard/movies" || this.pathname === "/dashboard/series" || this.pathname === "/dashboard/add-content" || this.pathname === "/dashboard/pages";
+                this.dropdownContentManager = this.pathname === "/dashboard/categories" || this.pathname === "/dashboard/films" || this.pathname === "/dashboard/series" || this.pathname === "/dashboard/ajouter-contenu" || this.pathname === "/dashboard/pages";
             },
             toggleDropdownContentManager() {
                 this.dropdownContentManager = !this.dropdownContentManager

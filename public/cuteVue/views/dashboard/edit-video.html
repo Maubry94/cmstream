@@ -15,7 +15,7 @@
     @submit="editVideo"
     >
         <div class="mt-[10px] flex flex-col gap-[20px] movie-inputs">
-            <label class="font-bold">Modifier {{ this.typeEdit === 'serie' ? 'la série' : this.typeEdit === 'movie' ? 'le film' : 'l\'épisode' }}</label>
+            <label class="font-bold">Modifier {{ this.typeEdit === 'serie' ? 'la série' : this.typeEdit === 'film' ? 'le film' : 'l\'épisode' }}</label>
 
             <div class="w-full flex gap-[20px] inputs-group">
                 <div class="w-full flex flex-col items-start">
@@ -30,7 +30,7 @@
                     />
                 </div>
 
-                <div cv-if="this.typeEdit === 'serie' || this.typeEdit === 'movie'" class="w-full flex flex-col items-start gap-[10px]">
+                <div cv-if="this.typeEdit === 'serie' || this.typeEdit === 'film'" class="w-full flex flex-col items-start gap-[10px]">
                     <label>Miniature</label>
 
                     <text-input
@@ -57,7 +57,7 @@
             </div>
 
             <div class="flex items-end gap-[20px]">
-                <div cv-if="this.typeEdit === 'serie' || this.typeEdit === 'movie'" class="flex flex-col">
+                <div cv-if="this.typeEdit === 'serie' || this.typeEdit === 'film'" class="flex flex-col">
                     <label>Catégorie</label>
 
                     <div class="flex">
@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                <div cv-if="this.typeEdit === 'serie' || this.typeEdit === 'movie'" class="flex flex-col">
+                <div cv-if="this.typeEdit === 'serie' || this.typeEdit === 'film'" class="flex flex-col">
                     <label>Date de sortie</label>
 
                     <text-input
@@ -192,7 +192,7 @@
         </div>
     </cv-form>
 
-    <cv-form cv-if="this.typeEdit === 'movie' || this.typeEdit === 'episode'" @submit="addUrl">
+    <cv-form cv-if="this.typeEdit === 'film' || this.typeEdit === 'episode'" @submit="addUrl">
         <div class="w-full flex flex-col items-start m-[5px] gap-[20px]">
             <label class="font-bold">Ajouter une URL</label>
 
@@ -215,10 +215,10 @@
         </div>
     </cv-form>
 
-    <label cv-if="this.typeEdit === 'episode' || this.typeEdit === 'movie'" class="font-bold">{{ this.typeEdit === 'episode' ? 'URLs de l\'épisode' : 'URLs du film' }}</label>
+    <label cv-if="this.typeEdit === 'episode' || this.typeEdit === 'film'" class="font-bold">{{ this.typeEdit === 'episode' ? 'URLs de l\'épisode' : 'URLs du film' }}</label>
 
     <paging-table
-    cv-if="this.typeEdit === 'movie' || this.typeEdit === 'episode'"
+    cv-if="this.typeEdit === 'film' || this.typeEdit === 'episode'"
     class="mt-[20px]"
     :items="this.urls"
     :cols="this.urlsCols"
@@ -406,7 +406,7 @@
                         if (info === "video.image") this.pushToast("error", "Veuillez vérifier le lien de l'image.");
                     })
                     .result
-                } else if (this.typeEdit === "movie") {
+                } else if (this.typeEdit === "film") {
                     await taob.put("movie/" + this.idVideo, {
                         title_video: this.titleVideo,
                         description: this.descriptionVideo,
@@ -667,7 +667,7 @@
                 this.typeEdit = "episode";
                 this.idVideo = episodeId;
                 this.getVideo();
-                router.push(`/dashboard/edit-video/episode/${this.idVideo}`);
+                router.push(`/dashboard/editer-video/episode/${this.idVideo}`);
             }
         },
         mounted() {

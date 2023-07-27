@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $appName ?></title>
+    <title><?= $appName ?><?= $title ? " - " . $title : "" ?></title>
     <?= $description ? "<meta name=\"description\" content=\"$description\">" : '' ?>
     <?= $keywords ? "<meta name=\"keywords\" content=\"$keywords\">" : '' ?>
     <link rel="icon" href="/public/img/icons/logo.png">

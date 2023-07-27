@@ -81,7 +81,7 @@ class register extends Controller
             "Bonjour " . $this->floor->pickup("firstname") . " " . $this->floor->pickup("lastname") . ",<br><br>" .
             "Merci de vous &ecirctre inscrit sur notre site.<br>" .
             "Pour valider votre compte, veuillez cliquer sur le lien suivant :<br><br>" .
-            "<a href='" . CONFIG["HOST"] . "/validate?token=" . $token . "'>Valider mon compte</a><br><br>" .
+            "<a href='" . CONFIG["HOST"] . "/validation?token=" . $token . "'>Valider mon compte</a><br><br>" .
             "Cordialement,<br>" .
             "L'&eacutequipe de notre site."
         );
@@ -378,7 +378,7 @@ class mailResetPassword extends Controller
             "Changement de mot de passe",
             "Bonjour " . $user->getFirstname() . " " . $user->getLastname() . ",<br><br>" .
             "Pour Changer votre mot de passe, veuillez cliquer sur le lien suivant :<br><br>" .
-            "<a href='" . CONFIG["HOST"] . "/reset-password?token=" . $token . "'>Changer mon mot de passe</a><br><br>" .
+            "<a href='" . CONFIG["HOST"] . "/reinitialiser-mot-de-passe?token=" . $token . "'>Changer mon mot de passe</a><br><br>" .
             "Cordialement,<br>" .
             "L'&eacutequipe de notre site."
         );

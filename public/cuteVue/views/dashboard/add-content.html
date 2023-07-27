@@ -117,7 +117,7 @@
                 },
                 {
                     text: "Film",
-                    value: "movie"
+                    value: "film"
                 }
             ],
             currentType: "serie",
@@ -156,11 +156,11 @@
                         release_date: this.formReleaseDate
                     })
                     .s(data => {
-                        router.push("/dashboard/edit-video/serie/" + data.id);
+                        router.push("/dashboard/editer-video/serie/" + data.id);
                     })
                     .e(err => this.pushToast("error", "Une erreur est survenu lors de l'ajout du contenu."))
                     .result;
-                } else if (this.currentType === "movie") {
+                } else if (this.currentType === "film") {
                     await taob.post("movie", {
                         description: this.formDescription === "" ? "Ce film n'a pas de description." : this.formDescription,
                         image: this.formImage,
@@ -169,7 +169,7 @@
                         release_date: this.formReleaseDate
                     })
                     .s(data => {
-                        router.push("/dashboard/edit-video/movie/" + data.id);
+                        router.push("/dashboard/editer-video/film/" + data.id);
                     })
                     .e(err => this.pushToast("error", "Une erreur est survenu lors de l'ajout du contenu."))
                     .result;
@@ -207,7 +207,7 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
 
-            this.currentType = urlParams.get('type') === "serie" ? "serie" : "movie";
+            this.currentType = urlParams.get('type') === "serie" ? "serie" : "film";
         },
         stores: [
             {
