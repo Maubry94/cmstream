@@ -15,34 +15,29 @@ createRoute(
                 {
                     path: "/",
                     view: () => importer("/public/cuteVue/views/home.html"),
-                },
-                
+                },   
                 {
                     path: "/pages/{name}",
                     view: () => importer("/public/cuteVue/views/home.html"),
                 },
                 {
-                    path: "/signup",
+                    path: "/inscription",
                     view: () => importer("/public/cuteVue/views/signup.html"),
                 },
                 {
-                    path: "/signin",
+                    path: "/connexion",
                     view: () => importer("/public/cuteVue/views/signin.html"),
                 },
                 {
-                    path: "/validate",
-                    view: () => importer("/public/cuteVue/views/validate.html"),
-                },
-                {
-                    path: "/catalog",
+                    path: "/catalogue",
                     view: () => importer("/public/cuteVue/views/catalog.html"),
                 },
                 {
-                    path: "/movie/{id}",
+                    path: "/film/{id}",
                     view: () => importer("/public/cuteVue/views/video.html"),
                 },
                 {
-                    path: "/serie/{id}/season/{season}/episode/{episode}",
+                    path: "/serie/{id}/saison/{season}/episode/{episode}",
                     view: () => importer("/public/cuteVue/views/video.html"),
                 },
                 {
@@ -54,27 +49,19 @@ createRoute(
                     view: () => importer("/public/cuteVue/views/lists.html"),
                 },
                 {
-                    path: "/validate",
+                    path: "/validation",
                     view: () => importer("/public/cuteVue/views/validate.html"),
                 },
                 {
-                    path: "/account",
+                    path: "/compte",
                     view: () => importer("/public/cuteVue/views/account.html"),
                 },
                 {
-                    path: "/account/email",
-                    view: () => importer("/public/cuteVue/views/account/email.html"),
-                },
-                {
-                    path: "/account/password",
-                    view: () => importer("/public/cuteVue/views/account/password.html"),
-                },
-                {
-                    path: "/forgot-password",
+                    path: "/mot-de-passe-oublie",
                     view: () => importer("/public/cuteVue/views/forgot-password.html"),
                 },
                 {
-                    path: "/reset-password",
+                    path: "/reinitialiser-mot-de-passe",
                     view: () => importer("/public/cuteVue/views/reset-password.html"),
                 },
                 {
@@ -91,7 +78,7 @@ createRoute(
                     view: () => importer("/public/cuteVue/views/dashboard/dashboard.html"),
                 },
                 {
-                    path: "/dashboard/users",
+                    path: "/dashboard/utilisateurs",
                     view: () => importer("/public/cuteVue/views/dashboard/users.html"),
                 },
                 {
@@ -107,11 +94,11 @@ createRoute(
                     view: () => importer("/public/cuteVue/views/dashboard/series.html"),
                 },
                 {
-                    path: "/dashboard/movies",
+                    path: "/dashboard/films",
                     view: () => importer("/public/cuteVue/views/dashboard/movies.html"),
                 },
                 {
-                    path: "/dashboard/add-content",
+                    path: "/dashboard/ajouter-contenu",
                     view: () => importer("/public/cuteVue/views/dashboard/add-content.html"),
                 },
                 {
@@ -123,11 +110,11 @@ createRoute(
                     view: () => importer("/public/cuteVue/views/dashboard/config-mail.html"),
                 },
                 {
-                    path: "/dashboard/comments",
+                    path: "/dashboard/commentaires",
                     view: () => importer("/public/cuteVue/views/dashboard/comments.html"),
                 },
                 {
-                    path: "/dashboard/edit-video/{typeEdit}/{id}",
+                    path: "/dashboard/editer-video/{typeEdit}/{id}",
                     view: () => importer("/public/cuteVue/views/dashboard/edit-video.html"),
                 }
                 ,
@@ -141,7 +128,7 @@ createRoute(
 
     async (path) => {
         let close = loaderStore.push(path.split("?")[0]);
-        let {response: result} = await taob.get(
+        let { response: result } = await taob.get(
             path,
             {
                 headers: {
@@ -161,7 +148,14 @@ createRoute(
         }
         else if (result.status === 200) {
             let appName = result.headers.get("App-Name");
-            if (document.title !== appName) document.title = appName;
+            let pageTitle = result.headers.get("Page-Title");
+
+            if(path === "/notfound") appName = result.headers.get("App-Name") + " - 404 Not Found";
+            else if((path.includes("/film") || path.includes("/serie")) && !path.includes("/dashboard")) appName = pageTitle ? appName + " - " + pageTitle : appName;
+            else if(path !== "/") appName = appName +" - " + path.split("/")[1].charAt(0).toUpperCase() + path.split("/")[1].slice(1);
+            
+            document.title = appName;
+            
             return path;
         }
         else if (result.status === 404) {
@@ -170,7 +164,7 @@ createRoute(
         }
         else if(result.headers.get("info") === "token.invalid"){
             close();
-            return "/signin";
+            return "/connexion";
         }
         else {
             close();

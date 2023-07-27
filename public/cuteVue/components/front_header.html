@@ -26,7 +26,7 @@
                 </li>
 
                 <li class="h-full">
-                    <router_link href="/catalog" class="h-full px-[10px] flex items-center text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayOptionsMenu = false">
+                    <router_link href="/catalogue" class="h-full px-[10px] flex items-center text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayOptionsMenu = false">
                         Catalogue
                     </router_link>
                 </li>
@@ -126,13 +126,13 @@
                         cv-ref="optionsMenu"
                         >
                             <div cv-if="!this.isConnected" class="py-4 flex flex-col gap-4">
-                                <router_link href="/signup" class="px-4 py-2 flex flex-col text-whiteless hover:bg-darkblue signup" @click="this.displayOptionsMenu = false">
+                                <router_link href="/inscription" class="px-4 py-2 flex flex-col text-whiteless hover:bg-darkblue signup" @click="this.displayOptionsMenu = false">
                                     <span class="text-xl font-semibold">Créer un compte</span>
 
                                     <p class="text-sm">Inscrivez-vous gratuitement.</p>
                                 </router_link>
 
-                                <router_link href="/signin" class="px-4 py-2 flex flex-col text-whiteless hover:bg-darkblue signin" @click="this.displayOptionsMenu = false">
+                                <router_link href="/connexion" class="px-4 py-2 flex flex-col text-whiteless hover:bg-darkblue signin" @click="this.displayOptionsMenu = false">
                                     <span class="text-xl font-semibold">Se connecter</span>
 
                                     <p class="text-sm">Déjà inscrit ? Bon retour.</p>
@@ -147,7 +147,7 @@
                                         <span>Accéder au dashboard</span>
                                     </router_link>
                                     
-                                    <router_link href="/account" class="px-4 py-2 flex gap-[10px] items-center text-whiteless hover:text-white hover:bg-darkblue account" @click="this.displayOptionsMenu = false">
+                                    <router_link href="/compte" class="px-4 py-2 flex gap-[10px] items-center text-whiteless hover:text-white hover:bg-darkblue account" @click="this.displayOptionsMenu = false">
                                         <icon name="account" class="text-[24px]"/>
 
                                         <span>Paramètres du compte</span>
@@ -199,7 +199,7 @@
                 </li>
 
                 <li>
-                    <router_link href="/catalog" class="w-full px-6 py-4 flex text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
+                    <router_link href="/catalogue" class="w-full px-6 py-4 flex text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
                         Catalogue
                     </router_link>
                 </li>
@@ -254,7 +254,7 @@
                 </li>
                
                 <li cv-if="this.isConnected">
-                    <router_link href="/account" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
+                    <router_link href="/compte" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
                         <icon name="account" class="text-[24px]"/>
                         
                         Paramètres du compte
@@ -262,19 +262,19 @@
                 </li>
 
                 <li cv-if="!this.isConnected">
-                    <router_link href="/signup" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
+                    <router_link href="/inscription" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
                         Créer un compte
                     </router_link>
                 </li>
 
                 <li cv-if="!this.isConnected">
-                    <router_link href="/signin" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
+                    <router_link href="/connexion" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false">
                         Se connecter
                     </router_link>
                 </li>
 
                 <li cv-if="this.isConnected">
-                    <router_link href="/signin" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false; this.toDisconnect()">
+                    <router_link href="/connexion" class="w-full px-6 py-4 flex items-center gap-[10px] text-sm text-whiteless hover:text-white hover:bg-blackless" @click="this.displayNaveBar = false; this.toDisconnect()">
                         <icon name="logout" class="text-[24px]"/>
                         
                         Se déconnecter

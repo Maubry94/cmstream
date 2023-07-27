@@ -60,9 +60,9 @@
             href() {
                 if (this.content !== null) {
                     if (this.content.value_type === "E") {
-                        return `/serie/${this.content.value.serie.id}/season/${this.content.value.season}/episode/${this.content.value.episode}`;
+                        return `/serie/${this.content.value.serie.id}/saison/${this.content.value.season}/episode/${this.content.value.episode}`;
                     } else {
-                        return `/movie/${this.content.value.id}`;
+                        return `/film/${this.content.value.id}`;
                     }
                 }
             }

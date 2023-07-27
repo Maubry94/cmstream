@@ -14,7 +14,7 @@
 
             <router_link
             cv-if="this.hasPermission('comments_manager')"
-            :href="`/dashboard/edit-video/movie/${this.params.id}`"
+            :href="`/dashboard/editer-video/film/${this.params.id}`"
             class="hover:text-skyblue"
             title="Éditer"
             >
@@ -36,7 +36,7 @@
 
             <router_link
             cv-if="this.hasPermission('comments_manager')"
-            :href="`/dashboard/edit-video/episode/${this.episodeId}`"
+            :href="`/dashboard/editer-video/episode/${this.episodeId}`"
             class="hover:text-skyblue"
             title="Éditer"
             >
@@ -177,7 +177,7 @@
                 <router_link
                 cv-for="e of this.episodes"
                 class="w-full"
-                :href="`/serie/${this.params.id}/season/${this.e.season}/episode/${this.e.episode}`"
+                :href="`/serie/${this.params.id}/saison/${this.e.season}/episode/${this.e.episode}`"
                 >   
                     <p class="w-full h-full overflow-hidden text-ellipsis whitespace-nowrap hover:underline">
                         ep {{this.e.episode}} : <strong>{{ " " + this.e.title + " "}}</strong> 
@@ -264,7 +264,7 @@
         },
         methods: {
             async init(){
-                if(this.pathname.startsWith("/movie")){
+                if(this.pathname.startsWith("/film")){
                     const movie = await taob.get(
                         "/movie/{id}", 
                         {
@@ -495,20 +495,20 @@
                 let indexEpisode = this.episodes.findIndex(e => e.episode == this.params.episode);
                 let indexSeason = this.seasons.findIndex(s => s == this.params.season);
                 if(this.episodes[indexEpisode + 1]){
-                    router.push(`/serie/${this.params.id}/season/${this.params.season}/episode/${this.episodes[indexEpisode + 1].episode}`);
+                    router.push(`/serie/${this.params.id}/saison/${this.params.season}/episode/${this.episodes[indexEpisode + 1].episode}`);
                 }
                 else if(this.seasons[indexSeason + 1]){
-                    router.push(`/serie/${this.params.id}?season=${this.seasons[indexSeason + 1]}`);
+                    router.push(`/serie/${this.params.id}?saison=${this.seasons[indexSeason + 1]}`);
                 }
             },
             previous(){
                 let indexEpisode = this.episodes.findIndex(e => e.episode == this.params.episode);
                 let indexSeason = this.seasons.findIndex(s => s == this.params.season);
                 if(this.episodes[indexEpisode - 1]){
-                    router.push(`/serie/${this.params.id}/season/${this.params.season}/episode/${this.episodes[indexEpisode - 1].episode}`);
+                    router.push(`/serie/${this.params.id}/saison/${this.params.season}/episode/${this.episodes[indexEpisode - 1].episode}`);
                 }
                 else if(this.seasons[indexSeason - 1]){
-                    router.push(`/serie/${this.params.id}?season=${this.seasons[indexSeason - 1]}`);
+                    router.push(`/serie/${this.params.id}?saison=${this.seasons[indexSeason - 1]}`);
                 }
             },
         },
